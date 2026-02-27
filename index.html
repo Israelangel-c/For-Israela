@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Can't Sleep</title>
+<title>Love Letter</title>
 
 <style>
 * {
@@ -26,7 +26,7 @@ body {
 .scene {
     position: relative;
     width: 400px;
-    height: 500px;
+    height: 520px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +82,6 @@ body {
     clip-path: polygon(0 0, 50% 55%, 100% 0);
     transform-origin: top;
     transition: transform 0.8s ease;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
 /* Open animation */
@@ -107,14 +106,15 @@ body {
     background: #fffdf7;
     border-radius: 8px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-    padding: 25px;
+    padding: 20px;
     text-align: center;
-    overflow: hidden;
     opacity: 0;
     transform: translateY(60px);
-    transition: opacity 1s ease, transform 1s ease, height 1s ease;
+    transition: opacity 1s ease, transform 1s ease, height 0.8s ease;
     cursor: pointer;
     z-index: 3;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Reveal */
@@ -128,17 +128,42 @@ body {
     height: 420px;
 }
 
-/* Poetry */
-.poetry {
-    opacity: 0;
-    transition: opacity 1.2s ease 0.5s;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #444;
+/* Title */
+.letter h3 {
+    margin-bottom: 10px;
 }
 
+/* Scrollable content container */
+.poetry {
+    opacity: 0;
+    flex: 1;
+    overflow-y: hidden;
+    transition: opacity 1.2s ease 0.4s;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444;
+    padding-right: 5px;
+}
+
+/* Enable scrolling after unfold */
 .letter.unfolded .poetry {
     opacity: 1;
+    overflow-y: auto;
+}
+
+/* Smooth scroll */
+.poetry {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar (optional but clean) */
+.poetry::-webkit-scrollbar {
+    width: 6px;
+}
+
+.poetry::-webkit-scrollbar-thumb {
+    background: #f8c8dc;
+    border-radius: 3px;
 }
 </style>
 </head>
@@ -157,21 +182,26 @@ body {
 
     <!-- Letter -->
     <div class="letter" id="letter">
-        <h3>For You Angel</h3>
+        <h3>For You ❤️</h3>
         <div class="poetry">
-            I can't sleep thinking about you,<br><br>
-
-            The quiet night wraps around me,<br>
-            but my thoughts wander only to you.<br><br>
-
-            The moonlight touches my window,<br>
-            as if carrying your gentle smile.<br><br>
-
-            Every heartbeat feels louder,<br>
-            because it whispers your name.<br><br>
-
-            Maybe this isn’t sleeplessness…<br>
-            softly keeping me awake.
+            My intentions with you are pure.<br><br>
+            I don’t want to hurt you — I want to make you smile.<br><br>
+            I want you to know how special you are to me.<br><br>
+            I won’t be someone who breaks your trust.<br>
+            I will be someone you trust deeply,<br>
+            someone you can share everything with<br>
+            without fear.<br><br>
+            I will never make you regret<br>
+            letting me become close to you.<br><br>
+            I’m sorry if someone before<br>
+            made you feel small<br>
+            when you loved them fully.<br><br>
+            I just want to be your comfort.<br>
+            Your peace.<br>
+            The place your heart feels safe.<br><br>
+            I don’t want anything from you —<br>
+            except your happiness.<br><br>
+            I promise.
         </div>
     </div>
 
@@ -200,7 +230,7 @@ envelope.addEventListener("click", () => {
     }
 });
 
-letter.addEventListener("click", () => {
+letter.addEventListener("click", (e) => {
     if (opened && !unfolded) {
         letter.classList.add("unfolded");
         unfolded = true;
@@ -208,3 +238,5 @@ letter.addEventListener("click", () => {
 });
 </script>
 
+</body>
+</html>
